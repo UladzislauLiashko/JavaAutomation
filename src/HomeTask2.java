@@ -6,7 +6,7 @@ public class HomeTask2 {
 //        doubleForCycle();
 //        absForCycle();
 //        ifElseCycle();
-//        massivDannih();
+//        remoteController();
         switchCase();
     }
 
@@ -19,6 +19,7 @@ public class HomeTask2 {
         }
     }
 
+    //здесь попробовал два способа добавить негативные значения
     static void absForCycle() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter a number: ");
@@ -75,7 +76,7 @@ public class HomeTask2 {
         } while (isInCorrectValue);
     }
 
-    static void massivDannih() {
+    static void remoteController() {
         String[] channels = new String[]{"BT", "ONT", "TNT", "Eurosport"};
         int channel = 0;
         do {
@@ -94,34 +95,42 @@ public class HomeTask2 {
     static void switchCase() {
         String name = "";
         String lastName = "";
-        int dateOfBirth = 0;
-        System.out.println("""
-                ○ 1. Ввести имя
-                ○ 2. Ввести фамилию
-                ○ 3. Ввести год рождения
-                ○ 4. Вывести информацию
-                ○ 0. Выход\s""");
-        System.out.println("Выберите пункт меню");
-        int item = new Scanner(System.in).nextInt();
-        if (item > 0) {
+        String dateOfBirth = "";
+        String item = ""; //сделал стрингом, чтобы в случае ввода НЕ цифры у меня падала ошибка, как в случае, когда цифра вне диапазона
+        do {
+            System.out.println("""
+                    ○ 1. Ввести имя
+                    ○ 2. Ввести фамилию
+                    ○ 3. Ввести год рождения (в формате DD/MM/YYYY)
+                    ○ 4. Вывести информацию
+                    ○ 0. Выход""");
+            System.out.println("\nВыберите пункт меню");
+            item = new Scanner(System.in).nextLine();
             switch (item) {
-                case 1:
+                case "1":
                     System.out.println("Введите имя");
                     name = new Scanner(System.in).nextLine();
-                case 2:
+                    break;
+                case "2":
                     System.out.println("Введите фамилию");
                     lastName = new Scanner(System.in).nextLine();
-                case 3:
+                    break;
+                case "3":
                     System.out.println("Введите дату рождения");
-                    dateOfBirth = new Scanner(System.in).nextInt();
-                case 4:
-                    System.out.println("Ваше имя - " + name );
+                    dateOfBirth = new Scanner(System.in).nextLine();
+                    break;
+                case "4":
+                    System.out.println("Ваше имя - " + name);
                     System.out.println("Ваша фамилия - " + lastName);
-                    System.out.println("Дата рождения - " + dateOfBirth);
+                    System.out.println("Дата рождения - " + dateOfBirth + "\n");
+                    break;
+                case "0":
+                    System.out.println("Leaving program\n");
+                    break;
+                default:
+                    System.out.println("There is no such menu item\n");
             }
-        } else if ( item == 0) {
-            System.out.println("Leaving program");
-        }
+        } while (!item.equals("0"));
     }
 }
 
