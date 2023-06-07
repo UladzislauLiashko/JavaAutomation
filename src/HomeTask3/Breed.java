@@ -1,7 +1,9 @@
 package HomeTask3;
 
+import javax.sound.midi.Soundbank;
+
 //это порода, если чтo :D
-public class Breed {
+public class Breed implements hasDescription {
     String name;
     String furFeature; //короткошёрстная, длинношёрстная, лысая
     String feature; //косогласие, плоская морда
@@ -28,8 +30,12 @@ public class Breed {
     @Override
     public String toString() {
         return "Cat's breed is '" + name + '\'' +
-                ". Cat is '" + furFeature + '\'' +
-                ". Does it have breed features? - " + feature;
+                ". Cat is '" + furFeature + '\'';
     }
-}
+
+        public void printDescription() {
+            System.out.println("Do your animal have breed features? - " + feature);
+        }
+    }
+
 

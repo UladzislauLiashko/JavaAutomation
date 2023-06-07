@@ -1,6 +1,6 @@
 package HomeTask3;
 
-public class Cat {
+public class Cat extends FelisCatus {
     Nickname nickname;
     Breed breedName;
     Color colorName;
@@ -11,6 +11,7 @@ public class Cat {
         this.breedName = breedName;
         this.colorName = colorName;
         this.ageNumber = ageNumber;
+        defineEnvironmentByFood("Meat");
     }
 
     @Override
@@ -18,7 +19,8 @@ public class Cat {
         return  nickname + ",\n" +
                 breedName + ",\n" +
                 colorName + ",\n" +
-                ageNumber;
-
+                ageNumber + ",\n" +
+                (isAlive ? "Your cat is alive!" : "Your cat is dead :(" )  + "\n" +
+                "Your cat is living on/in " + getEnvironment();
     }
 }
